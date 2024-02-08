@@ -8,7 +8,7 @@ git_repository(
 )
 
 http_archive(
-    name = "absl",
+    name = "com_google_absl",
     urls = [
         "https://github.com/abseil/abseil-cpp/releases/download/20240116.0/abseil-cpp-20240116.0.tar.gz",
     ],
@@ -22,6 +22,16 @@ http_archive(
   sha256 = "cd55a062e763b9349921f0f5db8c3933288dc8ba4f76dd9416aac68acee3cb94",
   urls = ["https://github.com/bazelbuild/bazel-skylib/releases/download/1.5.0/bazel-skylib-1.5.0.tar.gz"],
 )
+
+http_archive(
+    name = "com_google_googletest",
+    sha256 = "8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7",
+    urls = ["https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz"],
+    strip_prefix = "googletest-1.14.0",
+)
+
+load("@com_google_googletest//:googletest_deps.bzl", "googletest_deps")
+googletest_deps()
 
 # http_archive(
 #     name = "glog",

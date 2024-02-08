@@ -1,15 +1,17 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
+
 package(default_visibility = ["//visibility:public"])
 
 cc_library(
     name = "logging",
     hdrs = [
-        "logging.h",
         "log_severity.h",
+        "logging.h",
     ],
     deps = [
-        "@absl//absl/log:absl_log",
-        "@absl//absl/log:check",
+        "@com_google_absl//absl/log",
+        "@com_google_absl//absl/log:absl_log",
+        "@com_google_absl//absl/log:check",
     ],
 )
 
@@ -22,7 +24,7 @@ cc_library(
     name = "casts",
     hdrs = ["casts.h"],
     deps = [
-        "@absl//absl/log",
+        "@com_google_absl//absl/log",
     ],
 )
 
@@ -36,6 +38,10 @@ cc_library(
     hdrs = [
         "commandlineflags.h",
         "commandlineflags_declare.h",
+    ],
+    deps = [
+        ":integral_types",
+        "@com_google_absl//absl/flags:flag",
     ],
 )
 
